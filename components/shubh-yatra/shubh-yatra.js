@@ -1,4 +1,4 @@
-function helloWorldController($scope, $state, $http) {
+function mainController($scope, $state, $http) {
     'ngInject';
 
     $scope.active = 0;
@@ -17,7 +17,7 @@ function helloWorldController($scope, $state, $http) {
     }
 
     // we will store all of our first form data in this object
-    $scope.formData = { firstName: '', lastName: '', email: '', phone: ''};
+    $scope.formData = {firstName: '', lastName: '', email: '', phone: ''};
     $scope.originForm = angular.copy($scope.formData);
 
     $scope.location = {};
@@ -36,7 +36,7 @@ function helloWorldController($scope, $state, $http) {
     $scope.letsGo = function () {
         $scope.active = 1;
         $scope.tabDisable1 = false;
-        var tab=angular.element( angular.element('.notActive')[0]);
+        var tab = angular.element(angular.element('.notActive')[0]);
         tab.removeClass('notActive');
     };
 
@@ -52,29 +52,34 @@ function helloWorldController($scope, $state, $http) {
     $scope.submitForm = function () {
         $scope.active = 2;
         $scope.tabDisable2 = false;
-        var tab=angular.element( angular.element('.notActive')[0]);
+        var tab = angular.element(angular.element('.notActive')[0]);
         tab.removeClass('notActive');
     };
 
     $scope.secondSubmitForm = function (valid, radioButton, checkbox) {
         $scope.active = 3;
         $scope.tabDisable3 = false;
-        var tab=angular.element( angular.element('.notActive'));
+        var tab = angular.element(angular.element('.notActive'));
         tab.removeClass('notActive');
         $scope.selectedRadioButton = angular.copy(radioButton);
         $scope.selectedCheakbox = angular.copy(checkbox);
     };
     $scope.thridSubmitForm = function () {
+        $scope.active = 0;
         var body = '<b>Registration details</b>';
         body += '<p>This is the confirmation mail of the Travel Booking.</p>';
-            body += 'Name: ' + $scope.formData.firstName + " " + $scope.formData.lastName;
-        body += '<br>email: ' + $scope.formData.email;
+        body += 'Name: ' + $scope.formData.firstName + " " + $scope.formData.lastName;
+        body += '<br>Email: ' + $scope.formData.email;
         body += '<br>Mobile: ' + $scope.formData.phone;
+        body += '<br>Location: ' + $scope.location.selected.city;
+        body += '<br>Depart Date: ' + $scope.dt1.date;
+        body += '<br>Return Date: ' + $scope.dt.date;
         body += '<br>Note: You are not required to replay to this email.';
+        body += '<br><br><br>Thanks & Regards,<br>Shubh-Yatra.';
 
         // $scope.send = function(){
         $scope.message = {
-            sender:'sangita@shubhYatra.com',
+            sender: 'sangita@shubhYatra.com',
             subject: 'Travel Booking',
             body: body,
             reciepant: $scope.formData.email
@@ -104,7 +109,7 @@ function helloWorldController($scope, $state, $http) {
     };
     $scope.change = function (selectedRadioButton) {
         $scope.active = 1;
-        if(selectedRadioButton == 'roundTrip'){
+        if (selectedRadioButton == 'roundTrip') {
             $scope.radioBSecond = true;
         }
     };
@@ -135,6 +140,7 @@ function helloWorldController($scope, $state, $http) {
     function disabled(data) {
         var date = data.date;
     }
+
     $scope.today = function () {
         $scope.dt = new Date();
         $scope.dt1 = new Date();
@@ -160,4 +166,4 @@ function helloWorldController($scope, $state, $http) {
         opened: false
     };
 }
-export default helloWorldController;
+export default mainController;

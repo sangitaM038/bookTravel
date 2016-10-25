@@ -13,7 +13,7 @@
             <h3 class="textColor">{{formData.firstName}}&nbsp;{{formData.lastName}}</h3>
             <h3 class="textColor">{{formData.phone}}</h3>
             <p class="textColor">Will depart for</p>
-            <h3 class="textColor">Location:&nbsp;{{ location.selected.city}}</h3>
+            <h3 class="textColor">{{ location.selected.city}}</h3>
             <p class="textColor"> On </p>
             <h3 class="textColor">{{ dt1.date | date:fullDate}}</h3>
             <p ng-if="selectedRadioButton == 'roundTrip' || radioBSecond" class="textColor">And return on</p>
