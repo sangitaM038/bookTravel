@@ -1,0 +1,89 @@
+<div class="form-background col-sm-8 col-xs-offset-2">
+    <div>
+        <img class="img-responsive pull-right"
+             src="/components/shubh-yatra/images/cross15.png" ng-click="cancelSecond()"
+             uib-tooltip="Close"
+             tooltip-placement="top"
+             tooltip-trigger="'mouseenter'"
+             draggable="false" ondragstart="return false;">
+    </div>
+    <ng-form name="nestedForm2">
+        <div class="form-group">
+            <div ng-init="radioButton = oneWay"/>
+            <div class="radio-inline">
+                <label>
+                    <input type="radio" id="myRadio" name="trip" value="oneWay" ng-model="radioButton"
+                           ng-checked="true">
+                    One Way &nbsp;
+                </label>
+            </div>
+            <div class="radio-inline roundTrip">
+                <label>
+                    <input type="radio" name="trip" value="roundTrip" ng-model="radioButton">
+                    Round Trip &nbsp;
+                </label>
+            </div>
+
+            <div class="checkbox-inline">
+                <label>
+                    <input type="checkbox" name="checkbox" ng-model="checkbox"> Prefer non-stop
+                </label>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': nestedForm2.location.$invalid}">
+            <i class="fa fa-location-arrow" style="color: #f8ae45"></i>
+            <label>&nbsp;&nbsp;Location</label>
+            <div>
+                <ui-select ng-model="location.selected" name="location" ng-required="true">
+                    <ui-select-match placeholder="Search Location..">{{$select.selected.city}}
+                    </ui-select-match>
+                    <ui-select-choices group-by="'country'" repeat="item in locations | filter: $select.search">
+                        <span ng-bind-html="item.city | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+
+        <div>
+            <div class="form-group" ng-class="{'has-error': nestedForm2.date1.$invalid}">
+                <i class="fa fa-calendar" style="color: #f8ae45"></i>
+                <label class="control-label">&nbsp;Depart Date</label>
+
+                <p class="input-group" name="date1">
+                    <input type="text" class="form-control" uib-datepicker-popup ng-model="dt1.date"
+                           is-open="popup1.opened"
+                           datepicker-options="dateOptions" ng-required="true" ng-click="open1()" close-text="Close"/>
+                    <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open1()"><i
+                    class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+                </p>
+            </div>
+        </div>
+
+        <div ng-if="radioButton == 'roundTrip' || radioBSecond">
+            <div class="form-group" ng-class="{ 'has-error': nestedForm2.date2.$invalid }">
+                <i class="fa fa-calendar" style="color: #f8ae45"></i>
+                <label name="date2" class="control-label"></i>&nbsp;Return Date</label>
+                <p class="input-group">
+                    <input type="text" class="form-control" uib-datepicker-popup ng-model="dt.date"
+                           is-open="popup2.opened"
+                           datepicker-options="dateOptions" ng-required="true" ng-click="open2()" close-text="Close"/>
+                    <span class="input-group-btn">
+            <button type="button" class="btn btn-default" style="color: black" ng-click="open2()"><i
+                    class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="btn ccfield-prepend ccbtn" ui-sref="form.stepThree" type="button"
+                    ng-click='secondSubmitForm(nestedForm2.$valid,radioButton,checkbox)'
+                    ng-disabled="nestedForm2.$invalid">Next&nbsp;<i class="fa fa-hand-o-right" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="btn ccfield-prepend ccbtn" data-ng-click="clearSearchSecond()">Clear&nbsp;<i
+                    class="fa fa-eraser" aria-hidden="true"></i>
+            </button>
+        </div>
+    </ng-form>
+</div>

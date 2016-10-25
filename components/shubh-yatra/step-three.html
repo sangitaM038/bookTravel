@@ -1,0 +1,44 @@
+<div class="form-background col-sm-8 col-xs-offset-2">
+    <div>
+        <img class="img-responsive pull-right"
+             src="/components/shubh-yatra/images/cross15.png" ng-click="cancelThird()"
+             uib-tooltip="Close"
+             tooltip-placement="right"
+             tooltip-trigger="'mouseenter'"
+             draggable="false" ondragstart="return false;">
+    </div>
+    <ng-form name="nestedForm">
+        <div class="text-center">
+            <p style="font-size: 25px; color: #666666; border-radius: 20px;">
+            <h3 class="textColor">{{formData.firstName}}&nbsp;{{formData.lastName}}</h3>
+            <h3 class="textColor">{{formData.phone}}</h3>
+            <p class="textColor">Will depart for</p>
+            <h3 class="textColor">Location:&nbsp;{{ location.selected.city}}</h3>
+            <p class="textColor"> On </p>
+            <h3 class="textColor">{{ dt1.date | date:fullDate}}</h3>
+            <p ng-if="selectedRadioButton == 'roundTrip' || radioBSecond" class="textColor">And return on</p>
+            <h3 class="textColor">{{dt.date | date:fullDate}}</h3>
+            <p ng-if="selectedCheakbox == true" class="textColor">Prefer non-stop traveling.</p>
+
+            <div class="form-group">
+                <button type="submit" class="btn ccfield-prepend ccbtn"
+                        ng-click='thridSubmitForm(nestedForm.$valid)' ng-disabled="nestedForm.$invalid">
+                    Confirmation Mail&nbsp;<i class="fa fa-paper-plane" aria-hidden="true"></i>
+                </button>
+                <div class="col-xs-6">
+                    <button type="button" class="btn btn-info">
+                        <a style="color: black" href="http://www.momondo.in/hotels/s/{{location.selected.city}}"
+                           target="_blank">Visit Hotels in {{location.selected.city}}</a></h2>
+                        &nbsp;<i class="fa fa-building" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="col-xs-6">
+                    <button type="button" class="btn btn-primary" ui-sref="form.stepOne"
+                            data-ng-click="change(selectedRadioButton)">Change&nbsp;
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </ng-form>
+</div>

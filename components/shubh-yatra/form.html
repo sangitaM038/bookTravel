@@ -1,0 +1,36 @@
+<div class="row">
+    <div>
+        <div uib-carousel active="0" interval="2000" no-wrap="false">
+            <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+                <img src="/components/shubh-yatra/images/{{$index + 1}}.jpg"
+                     class="slide-image" draggable="false" ondragstart="return false;"/>
+            </div>
+            <div class="carousel-caption carousel-cell">
+                <h1>Shubh-Yatra{{slide.id}}</h1>
+                <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+                <h3>Contact Us : 9890216762</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="box container">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div id="form-container">
+                <form name="outerForm" class="tab-form-demo" novalidate ng-init="indexTab = active">
+                    <uib-tabset active="active" justified="true">
+                        <uib-tab index="0" ui-sref=".main" heading="Home" active="true"></uib-tab>
+                        <uib-tab index="1"  ui-sref=".stepOne"  heading="Personal" disable="tabDisable1"
+                                 class="notActive"></uib-tab>
+                        <uib-tab index="2" ui-sref=".stepTwo"   heading="Booking" disable="tabDisable2"
+                                 class="notActive"></uib-tab>
+                        <uib-tab index="3" ui-sref=".stepThree"  heading="Details" disable="tabDisable3"
+                                 class="notActive"></uib-tab>
+                    </uib-tabset>
+                    <div ui-view></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

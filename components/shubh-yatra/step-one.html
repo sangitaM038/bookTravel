@@ -1,0 +1,67 @@
+<div class="form-background col-sm-8 col-xs-offset-2">
+    <div>
+        <img class="img-responsive pull-right"
+             src="/components/shubh-yatra/images/cross15.png" ng-click="cancel()"
+             uib-tooltip="Close"
+             tooltip-placement="right"
+             tooltip-trigger="'mouseenter'"
+             draggable="false" ondragstart="return false;">
+    </div>
+    <ng-form name="nestedForm" class="ccform">
+        <div class="form-group">
+            <div ng-class="{'has-error' : nestedForm.firstName.$invalid && !nestedForm.firstName.$pristine }">
+                <i class="fa fa-user fa" style="color: #f8ae45"></i>
+                <label>&nbsp;&nbsp;First Name </label>
+                <input type="text" class="form-control" placeholder="First Name" name="firstName" ng-pattern="name"
+                       required
+                       ng-maxlength="20" ng-model="formData.firstName"/>
+                <p ng-show="nestedForm.firstName.$error.pattern" class="help-block">First
+                    Name is required and it must be letters.</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <div ng-class="{ 'has-error' : nestedForm.lastName.$invalid && !nestedForm.lastName.$pristine }">
+                <i class="fa fa-user fa" style="color: #f8ae45"></i>
+                <label>&nbsp;&nbsp;Last Name</label>
+                <input type="text" name="lastName" placeholder="Last Name" class="form-control" ng-pattern="name"
+                       required
+                       ng-model="formData.lastName" ng-maxlength="20"/>
+                <p ng-show="nestedForm.lastName.$error.pattern" class="help-block">Last Name
+                    is required and it must be letters.</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div ng-class="{'has-error' : nestedForm.email.$invalid && !nestedForm.email.$pristine }">
+                <i class="fa fa-envelope fa" style="color: #f8ae45"></i>
+                <label>&nbsp;&nbsp;Email</label>
+                <input type="email" name="email" placeholder="Email" class="form-control" ng-pattern="emailFormat"
+                       required
+                       ng-model="formData.email"/>
+                <p ng-show="nestedForm.email.$error.pattern" class="help-block">Enter a valid
+                    Email.</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div ng-class="{'has-error' : nestedForm.phone.$invalid && !nestedForm.phone.$pristine }">
+                <i class="fa fa-phone fa" style="color: #f8ae45"></i>
+                <label>&nbsp;&nbsp;Phone</label>
+                <input type="text" class="form-control" placeholder="Phone" name="phone" ng-pattern="phoneNumbr"
+                       required
+                       ng-model="formData.phone"/>
+                <p class="help-block error" ng-show="nestedForm.phone.$error.pattern">Enter a valid Phone Number</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button class="btn ccfield-prepend ccbtn" type="button" ng-click='submitForm(nestedForm.$valid)'
+                    ng-disabled="nestedForm.$invalid"
+                    ui-sref="form.stepTwo">Next&nbsp;<i class="fa fa-hand-o-right" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="btn ccfield-prepend ccbtn" data-ng-click="clearSearch()">Clear&nbsp;<i
+                    class="fa fa-eraser" aria-hidden="true"></i>
+            </button>
+        </div>
+    </ng-form>
+</div>
