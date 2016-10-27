@@ -90,6 +90,16 @@ function mainController($scope, $state, $http) {
             console.error("error in posting");
         });
         $state.go('form.main');
+        $scope.tabDisable1 = true;
+        $scope.tabDisable2 = true;
+        $scope.tabDisable3 = true;
+        for (var i = 0; i <= 3; i++) {
+            var tab = angular.element(angular.element('#' + i));
+            tab.addClass('notActive');
+        }
+        $scope.clearSearch();
+        $scope.clearSearch();
+        $scope.clearSearchSecond();
     };
     $scope.cancel = function () {
         $scope.active = 0;
@@ -113,7 +123,6 @@ function mainController($scope, $state, $http) {
             $scope.radioBSecond = true;
         }
     };
-
     $scope.phoneNumbr = /^\+?\d{2}[- ]?\d{3}[- ]?\d{5}$/;
     $scope.emailFormat = /^[a-zA-Z-'0-9._]+[a-zA-Z-'0-9._]+@[a-zA-Z-'0-9._]+\.[a-zA-Z-'.]{2,5}$/;
     $scope.name = /^([a-zA-Z-']{1,30})$/;
@@ -128,13 +137,13 @@ function mainController($scope, $state, $http) {
         {city: 'Ahmednagar', country: 'India '},
         {city: 'Satara', country: 'India '}
     ];
+
     $scope.dateOptions = {
         dateDisabled: disabled,
         formatYear: 'yy',
         maxDate: new Date(2020, 5, 22),
         minDate: new Date(),
         startingDay: 1
-
     };
     // visible only current date and future
     function disabled(data) {

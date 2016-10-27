@@ -2,7 +2,7 @@
     <div>
         <div uib-carousel active="0" interval="2000" no-wrap="false">
             <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
-                <img src="/components/shubh-yatra/images/{{$index + 1}}.jpg"
+                <img src="./components/shubh-yatra/images/{{$index + 1}}.jpg"
                      class="slide-image" draggable="false" ondragstart="return false;"/>
             </div>
             <div class="carousel-caption carousel-cell">
@@ -21,14 +21,14 @@
                 <form name="outerForm" class="tab-form-demo" novalidate ng-init="indexTab = active">
                     <uib-tabset active="active" justified="true">
                         <uib-tab index="0" ui-sref=".main" heading="Home" active="true"></uib-tab>
-                        <uib-tab index="1"  ui-sref=".stepOne"  heading="Personal" disable="tabDisable1"
+                        <uib-tab id="1" index="1" ui-sref=".stepOne" heading="Personal" disable="tabDisable1"
                                  class="notActive"></uib-tab>
-                        <uib-tab index="2" ui-sref=".stepTwo"   heading="Booking" disable="tabDisable2"
+                        <uib-tab id="2" index="2" ui-sref=".stepTwo" heading="Booking" disable="tabDisable2"
                                  class="notActive"></uib-tab>
-                        <uib-tab index="3" ui-sref=".stepThree"  heading="Details" disable="tabDisable3"
+                        <uib-tab id="3" index="3" ui-sref=".stepThree" heading="Details" disable="tabDisable3"
                                  class="notActive"></uib-tab>
                     </uib-tabset>
-                    <div ui-view></div>
+                    <div ui-view ></div>
                 </form>
             </div>
         </div>

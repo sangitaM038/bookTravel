@@ -7,7 +7,7 @@ app.configure(function () {
     app.use(express.cookieParser());
     app.use(express.session({secret: 'cool beans'}));
     app.use(express.methodOverride());
-})
+});
 
 app.all('*', function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
